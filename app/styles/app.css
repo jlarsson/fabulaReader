@@ -1,0 +1,145 @@
+#loading-indicator{
+    z-index: 100;
+    position: fixed; 
+    top: 15px; 
+    right:15px;
+}
+img.feedicon {
+    height: 24px;
+    width: auto;
+}
+
+img.loading{
+    z-index: 500;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    margin-top: -64px;
+    margin-left: -64px;
+}
+
+/* single line text with ellipsis */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* fix containers patological centering */
+.container {
+    /*padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;*/
+    
+    /*padding-left: 8px;
+    padding-right: 8px;*/
+    
+    padding: 8px;
+    margin-right: inherit;
+    margin-left: inherit;
+}
+
+/* always show navbar-collapse icons... */
+.navbar-toggle {
+    display: inherit!important;
+    /*float:inherit!important;*/
+    float: left;
+    position:static!important;
+}
+
+/* app header shows hambuger button and tidtle */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* by default, headers are shifted left which is bad for us */
+.container > .navbar-header {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* pages goes into app-content */
+.app-content {
+    margin: 0px;
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: white;
+}
+
+/* collapsible menu section becomes the drawer */
+.app-drawer {
+    z-index: 1000;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 0px; /* initially invisible */
+    height: 100%;
+    overflow-y:scroll;
+    background-color: #222222; /* as inverse navbar */
+    transition: width 0.2s ease-out;
+    -webkit-transition: width 0.2s ease-out;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.app-drawer-open {
+    width: 320px;
+    /*display:table;*/
+}
+
+img {
+    max-width: 90%;
+    height: auto;
+}
+/*
+@media (min-width: 480px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+
+@media (min-width: 480px) {
+    width: @container-sm;
+}
+@media (min-width: 768px) {
+    width: @container-sm;
+}
+@media (min-width: 992px) {
+    width: @container-md;
+}
+@media (min-width: 1200px){
+}
+*/
+
+
+
+.page-header{
+    padding: 15px;
+    /*margin: -15px;*/
+    margin: 0px;
+    background-color: #222222; /* as inverse navbar */
+    color: white;
+    border-bottom:none;
+}
+
+.page-header  .btn-link {
+    white-space:normal;
+}
+
+.btn-link h3 {
+    white-space:normal;
+}
+
+ul.nav .divider {
+    /*background-color: #3276b1;
+    border-color: #285e8e;*/
+    background-color:#3276b1;
+    height:1px;
+    
+}

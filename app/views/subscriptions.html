@@ -1,0 +1,20 @@
+<div class="page-header">
+    <h3>Manage subscriptions</h3>
+</div>
+<ul class="list-group">
+    <li ng-repeat="feed in subscriptions" ng-controller="SubscriptionCtrl" class="list-group-item">
+        <div>
+            <button class="btn btn-primary btn-xs" ng-show="!subscribed" ng-click="subscribe(true)">
+                <span class="glyphicon glyphicon-plus"> Subscribe</span>
+            </button>
+            <button class="btn btn-warning btn-xs" ng-show="subscribed" ng-click="subscribe(false)">
+                <span class="glyphicon glyphicon-minus"> Unsubscribe</span>
+            </button>
+        </div>
+        <a ng-href="#/feed/{{feed.url|encodeUrl}}">
+            <h4 class="list-group-item-heading" ><img src="{{feed.url|favicon}}" class="feedicon"/> <span ng-bind-html="feed.title|stripMarkup"/></h4>
+        </a>
+        <p>{{feed.description}}</p>
+        <a href="{{feed.link|externalLink}}">{{feed.link}}</a>
+    </li>
+</ul>

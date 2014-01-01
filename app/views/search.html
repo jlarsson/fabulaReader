@@ -1,0 +1,25 @@
+<div class="page-header">
+    <div class="container">
+        <input type="text" class="form-control" placeholder="search" ng-model="query" ng-trim="true" required>
+    </div>
+</div>
+<ul class="list-group">
+    <li ng-repeat="feed in feeds" ng-controller="SubscriptionCtrl" class="list-group-item">
+        <div>
+            <button class="btn btn-primary btn-xs" ng-show="!subscribed" ng-click="subscribe(true)">
+                <span class="glyphicon glyphicon-plus">Subscribe</span>
+            </button>
+            <button class="btn btn-warning btn-xs" ng-show="subscribed" ng-click="subscribe(false)">
+                <span class="glyphicon glyphicon-minus">Unsubscribe</span>
+            </button>
+        </div>
+        <a ng-href="#/feed/{{feed.url|encodeUrl}}">
+            <h4 class="list-group-item-heading">
+                <img src="{{feed.url|favicon}}" class="feedicon" hidebroken/>
+                <span ng-bind-html="feed.title|stripMarkup" />
+            </h4>
+        </a>
+        <p class="list-group-item-text" ng-bind-html="feed.contentSnippet"></p>
+        <a href="{{feed.link|externalLink}}">{{feed.link}}</a>
+    </li>
+</ul>

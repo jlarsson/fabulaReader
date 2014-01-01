@@ -1,0 +1,139 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- __bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- __endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="readerApp" ng-controller="AppNavigationCtrl">
+    <div class="app-drawer" id="app-drawer">
+        <div class="container">
+            <div class="nav navbar-inverse">
+                <div class="page-header"></div>
+                <ul class="nav">
+                    <li>
+                        <a href="#/allfeeds">
+                            <span class="glyphicon glyphicon-flash"></span> All posts</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/subscriptions">
+                            <span class="glyphicon glyphicon-wrench"></span> My subscriptions</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a ng-href="#/trends">
+                            <span class="glyphicon glyphicon-globe"></span> World trends</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/search">
+                            <span class="glyphicon glyphicon-search"></span> Find feeds</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li ng-repeat="feed in subscriptions track by feed.url">
+                        <a ng-href="#/feed/{{feed.url|encodeUrl}}">
+                            <img src="{{feed.url|favicon}}" class="feedicon" hidebroken/>
+                            <span ng-bind-html="feed.title|stripMarkup"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="app-header navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <img ng-show="indicateLoading" id="loading-indicator" src="images/ajax-loader.gif" alt="" />
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle app-drawer-toggle" data-toggle="drawer" data-target="#app-drawer">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-text truncate">{{header|stripMarkup}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="app-content container col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-view=""></div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- __bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-webstorage/angular-webstorage.js"></script>
+    <script src="bower_components/angular-cache/dist/angular-cache.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- __endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/trends.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/services/feeds.js"></script>
+    <script src="scripts/controllers/searchresultitem.js"></script>
+    <script src="scripts/controllers/feed.js"></script>
+    <script src="scripts/filters/stripmarkup.js"></script>
+    <script src="scripts/services/underscore.js"></script>
+    <script src="scripts/services/cache.js"></script>
+    <script src="scripts/controllers/post.js"></script>
+    <script src="scripts/controllers/appnavigation.js"></script>
+    <script src="scripts/services/encoder.js"></script>
+    <script src="scripts/controllers/subscriptions.js"></script>
+    <script src="scripts/controllers/subscription.js"></script>
+    <script src="scripts/services/settings.js"></script>
+    <script src="scripts/services/googlefeeds.js"></script>
+    <script src="scripts/filters/maplinkstoexternalbrowser.js"></script>
+    <script src="scripts/services/jquery.js"></script>
+    <script src="scripts/services/configurelinks.js"></script>
+    <script src="scripts/filters/encodeurl.js"></script>
+    <script src="scripts/filters/externallink.js"></script>
+    <script src="scripts/services/googlefeedmapper.js"></script>
+    <script src="scripts/services/viewstack.js"></script>
+    <script src="scripts/filters/favicon.js"></script>
+    <script src="scripts/directives/hidebroken.js"></script>
+    <script src="scripts/services/controllerstate.js"></script>
+    <script src="scripts/controllers/allfeeds.js"></script>
+    <script src="scripts/services/banner.js"></script>
+    <!-- endbuild -->
+    <script src="cordova.js"></script>
+    <script type="text/javascript">
+        $('.app-drawer-toggle[data-toggle="drawer"]').click(function() {
+            $($(this).attr('data-target')).toggleClass('app-drawer-open');
+        });
+
+        angular.module('readerApp')
+            .run(['$rootScope',
+                function($rootScope) {
+                    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+                        $('#app-drawer').removeClass('app-drawer-open');
+                    });
+                }
+            ]);
+    </script>
+</body>
+
+</html>

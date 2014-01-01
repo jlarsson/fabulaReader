@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="fabulareader.fab3.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Fabula Reader</name>
+    <description>
+        Stay up to date with your selected news and events.
+    </description>
+    <author email="fab3apps@gmail.com" href="http://cordova.io">
+        Fab3
+    </author>
+    <content src="index.html" />
+    <!--<access origin="*" />-->
+    <!--<access origin="http://127.0.0.1*" />-->
+</widget>

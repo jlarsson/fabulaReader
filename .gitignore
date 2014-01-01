@@ -1,0 +1,12 @@
+node_modules
+dist
+www
+.tmp
+.publish
+.sass-cache
+app/bower_components
+platforms/android/CordovaLib/bin/
+platforms/android/CordovaLib/gen/
+platforms/android/bin/
+platforms/android/gen/
+*.keystore
