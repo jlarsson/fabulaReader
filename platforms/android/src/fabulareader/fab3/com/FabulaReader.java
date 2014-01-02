@@ -22,7 +22,7 @@ package fabulareader.fab3.com;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class ReaderApp extends CordovaActivity 
+public class FabulaReader extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
