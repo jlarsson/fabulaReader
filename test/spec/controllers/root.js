@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: SearchresultitemCtrl', function () {
+describe('Controller: RootCtrl', function () {
 
   // load the controller's module
   beforeEach(module('readerApp'));
 
-  var SearchresultitemCtrl,
+  var RootCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    SearchresultitemCtrl = $controller('SearchresultitemCtrl', {
+    RootCtrl = $controller('RootCtrl', {
       $scope: scope
     });
   }));

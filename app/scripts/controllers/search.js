@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('SearchCtrl', ['$scope', '$routeParams', 'RouteState', 'Feeds', 'ControllerState',
-        function ($scope, $routeParams, routeState, feeds, controllerState) {
-            routeState.load($scope);
+    .controller('SearchCtrl', ['$scope', '$routeParams', 'RouteState', 'Feeds',
+        function ($scope, $routeParams, routeState, feeds) {
+            var state = routeState.load($scope);
             $scope.$emit('app:setheader', {
                 title: 'Find feeds'
             });
             
-            var state = controllerState.enterController($scope);
             $scope.query = $routeParams.cat || state.query || '';
             $scope.feeds = [];
             $scope.searchPending = false;

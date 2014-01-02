@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('AllFeedsCtrl', ['$scope', 'RouteState', 'Feeds', 'Cache', 'Encoder', 'ViewStack',
-        function ($scope, routeState, feeds, cache, encoder) {
+    .controller('AllFeedsCtrl', ['$scope', 'RouteState', 'Feeds',
+        function ($scope, routeState, feeds) {
             var state = routeState.load($scope);
 
             $scope.state = 'loading';
@@ -11,9 +11,6 @@ angular.module('readerApp')
                 loading: true
             });
 
-            $scope.cachePost = function (post) {
-                cache.update(encoder.encodeUrl(post.url), post);
-            };
 
             var loadSuccess = function (posts) {
                 state.posts = posts;

@@ -18,7 +18,7 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="readerApp" ng-controller="AppNavigationCtrl">
+<body ng-app="readerApp" ng-controller="RootCtrl">
     <div class="app-drawer" id="app-drawer">
         <div class="container">
             <div class="nav navbar-inverse">
@@ -91,34 +91,35 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/root.js"></script>
     <script src="scripts/controllers/trends.js"></script>
     <script src="scripts/controllers/search.js"></script>
-    <script src="scripts/services/feeds.js"></script>
-    <script src="scripts/controllers/searchresultitem.js"></script>
     <script src="scripts/controllers/feed.js"></script>
-    <script src="scripts/filters/stripmarkup.js"></script>
-    <script src="scripts/services/underscore.js"></script>
-    <script src="scripts/services/cache.js"></script>
     <script src="scripts/controllers/post.js"></script>
-    <script src="scripts/controllers/appnavigation.js"></script>
-    <script src="scripts/services/encoder.js"></script>
     <script src="scripts/controllers/subscriptions.js"></script>
     <script src="scripts/controllers/subscription.js"></script>
-    <script src="scripts/services/settings.js"></script>
-    <script src="scripts/services/googlefeeds.js"></script>
-    <script src="scripts/filters/maplinkstoexternalbrowser.js"></script>
-    <script src="scripts/services/jquery.js"></script>
-    <script src="scripts/services/configurelinks.js"></script>
+    <script src="scripts/controllers/allfeeds.js"></script>
+
+    <script src="scripts/filters/stripmarkup.js"></script>
     <script src="scripts/filters/encodeurl.js"></script>
     <script src="scripts/filters/externallink.js"></script>
-    <script src="scripts/services/googlefeedmapper.js"></script>
-    <script src="scripts/services/viewstack.js"></script>
+    <script src="scripts/filters/maplinkstoexternalbrowser.js"></script>
     <script src="scripts/filters/favicon.js"></script>
-    <script src="scripts/directives/hidebroken.js"></script>
-    <script src="scripts/services/controllerstate.js"></script>
-    <script src="scripts/controllers/allfeeds.js"></script>
+
+    <script src="scripts/services/feeds.js"></script>
+    <script src="scripts/services/underscore.js"></script>
+    <script src="scripts/services/cache.js"></script>
+    <script src="scripts/services/encoder.js"></script>
+    <script src="scripts/services/settings.js"></script>
+    <script src="scripts/services/googlefeeds.js"></script>
+    <script src="scripts/services/jquery.js"></script>
+    <script src="scripts/services/configurelinks.js"></script>
+    <script src="scripts/services/googlefeedmapper.js"></script>
     <script src="scripts/services/banner.js"></script>
     <script src="scripts/services/routestate.js"></script>
+
+    <script src="scripts/directives/hidebroken.js"></script>
+
     <!-- endbuild -->
     <script src="cordova.js"></script>
     <script type="text/javascript">

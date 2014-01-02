@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('TrendsCtrl', ['$scope', 'RouteState', 'Feeds', 'ViewStack',
-        function ($scope, routeState, feeds, viewStack) {
-            routeState.load($scope);
-            //var defaultCategories = ['Entertainment', 'Sport', 'Science', 'iPhone', 'World of Warcraft', 'Android', 'Obama', 'CNN'];
-            var defaultCategories = [];
-            $scope.trendingCategories = defaultCategories;
+    .controller('TrendsCtrl', ['$scope', 'RouteState', 'Feeds',
+        function ($scope, routeState, feeds) {
+            var state = routeState.load($scope);
+
+            $scope.trendingCategories = [];
 
             $scope.$emit('app:setloading', {
                 loading: true
@@ -25,7 +24,6 @@ angular.module('readerApp')
                             .map(function (s) {
                                 return s.replace(/<\/?[^>]+(>|$)/g, '');
                             })
-                            .concat(defaultCategories)
                             .shuffle()
                             .value();
                         $scope.$emit('app:setloading', {

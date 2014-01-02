@@ -32,7 +32,7 @@
                         </span>
                     </div>
                     <div class="pull-left col-xs-7">
-                        <a ng-href="#/post/{{post.url|encodeUrl}}" ng-click="cachePost(post)">
+                        <a ng-href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
                             <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                         </a>
                         <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>
@@ -41,7 +41,7 @@
             </ul>
             <ul ng-switch-default class="list-group">
                 <li ng-repeat="post in posts track by $index" class="list-group-item clearfix">
-                    <a ng-href="#/post/{{post.url|encodeUrl}}" ng-click="cachePost(post)">
+                    <a ng-href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
                         <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                     </a>
                     <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>

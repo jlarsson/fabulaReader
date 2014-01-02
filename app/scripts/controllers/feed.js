@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('FeedCtrl', ['$scope', '$routeParams', '$log', 'RouteState', 'Feeds', 'Cache', 'Encoder', '_', 'ViewStack',
-        function ($scope, $routeParams, $log, routeState, feeds, cache, encoder, _, viewStack) {
+    .controller('FeedCtrl', ['$scope', '$routeParams', '$log', '_', 'RouteState', 'Feeds', 'Encoder',
+        function ($scope, $routeParams, $log, _, routeState, feeds, encoder) {
             var url = encoder.decodeUrl($routeParams.encodedUrl);
 
             var state = routeState.load($scope);
@@ -14,9 +14,6 @@ angular.module('readerApp')
             $scope.subscribe = function (subscribe) {
                 feeds.subscribe($scope.feed, subscribe);
                 $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
-            };
-            $scope.cachePost = function (post) {
-                cache.update(encoder.encodeUrl(post.url), post);
             };
 
             $scope.$emit('app:setloading', {
