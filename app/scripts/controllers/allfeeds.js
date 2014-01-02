@@ -7,10 +7,8 @@ angular.module('readerApp')
 
             $scope.state = 'loading';
             $scope.posts = [];
-            $scope.$emit('app:setloading', {
-                loading: true
-            });
-
+            $scope.appTitle();
+            $scope.appLoading(true);
 
             var loadSuccess = function (posts) {
                 state.posts = posts;
@@ -23,16 +21,12 @@ angular.module('readerApp')
                         return p.thumbnail.url;
                     }) ? 'thumbnails' : 'normal';
 
-                $scope.$emit('app:setloading', {
-                    loading: false
-                });
+                $scope.appLoading(false);
             };
             var loadFail = function () {
                 state.posts = null;
                 $scope.state = 'error';
-                $scope.$emit('app:setloading', {
-                    loading: false
-                });
+                $scope.appLoading(false);
             };
 
             if (state.posts) {

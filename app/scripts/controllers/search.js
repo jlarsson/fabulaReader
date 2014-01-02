@@ -4,9 +4,7 @@ angular.module('readerApp')
     .controller('SearchCtrl', ['$scope', '$routeParams', 'RouteState', 'Feeds',
         function ($scope, $routeParams, routeState, feeds) {
             var state = routeState.load($scope);
-            $scope.$emit('app:setheader', {
-                title: 'Find feeds'
-            });
+            $scope.appTitle('Find feeds');
             
             $scope.query = $routeParams.cat || state.query || '';
             $scope.feeds = [];
@@ -42,9 +40,7 @@ angular.module('readerApp')
             };
 
             $scope.$watch('searchPending', function (v) {
-                $scope.$emit('app:setloading', {
-                    loading: v
-                });
+                $scope.appLoading(v);
             });
 
             $scope.$watch('query', function (search) {

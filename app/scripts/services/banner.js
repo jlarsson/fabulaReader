@@ -3,8 +3,6 @@
 angular.module('readerApp')
     .service('Banner', ['$window', '$log',
         function ($window) {
-            return;
-            
             var adMob;
 
             var showAd = function () {

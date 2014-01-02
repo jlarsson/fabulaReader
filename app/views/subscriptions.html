@@ -11,7 +11,7 @@
                 <span class="glyphicon glyphicon-minus"> Unsubscribe</span>
             </button>
         </div>
-        <a ng-href="#/feed/{{feed.url|encodeUrl}}">
+        <a href="#/feed/{{feed.url|encodeUrl}}" state>
             <h4 class="list-group-item-heading" ><img src="{{feed.url|favicon}}" class="feedicon"/> <span ng-bind-html="feed.title|stripMarkup"/></h4>
         </a>
         <p>{{feed.description}}</p>

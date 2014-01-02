@@ -12,7 +12,5 @@ angular.module('readerApp')
                 title: 'Unable to load post',
                 author: ''
             };
-            $scope.$emit('app:setheader', {
-                title: $scope.post.title
-            });
+            $scope.appTitle($scope.post.title);
   }]);

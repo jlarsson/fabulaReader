@@ -7,9 +7,8 @@ angular.module('readerApp')
 
             $scope.trendingCategories = [];
 
-            $scope.$emit('app:setloading', {
-                loading: true
-            });
+            $scope.appLoading(true);
+            $scope.appTitle('World trends');
             feeds.load('http://www.google.com/trends/hottrends/atom/hourly')
                 .then(function (data, status, headers, config) {
                         $scope.trendingCategories = _.chain(data.posts)
@@ -26,13 +25,9 @@ angular.module('readerApp')
                             })
                             .shuffle()
                             .value();
-                        $scope.$emit('app:setloading', {
-                            loading: false
-                        });
+                        $scope.appLoading(false);
                     },
                     function () {
-                        $scope.$emit('app:setloading', {
-                            loading: false
-                        });
+                        $scope.appLoading(false);
                     });
   }]);

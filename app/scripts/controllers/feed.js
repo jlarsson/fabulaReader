@@ -16,10 +16,7 @@ angular.module('readerApp')
                 $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
             };
 
-            $scope.$emit('app:setloading', {
-                loading: true
-            });
-
+            $scope.appLoading(true);
 
             var setLoadResult = function (result) {
                 state.loadResult = result;
@@ -36,12 +33,8 @@ angular.module('readerApp')
 
 
 
-                $scope.$emit('app:setheader', {
-                    title: $scope.feed.title
-                });
-                $scope.$emit('app:setloading', {
-                    loading: false
-                });
+                $scope.appTitle($scope.feed.title);
+                $scope.appLoading(false);
 
             };
             if (state.loadResult) {
@@ -53,65 +46,6 @@ angular.module('readerApp')
                     setLoadResult,
                     function (err) {
                         $scope.state = 'error';
-                        $scope.$emit('app:setloading', {
-                            loading: false
-                        });
+                        $scope.appLoading(false);
                     });
-
-            return;
-
-
-
-
-            var scrollRestoreEvent = viewStack.registerScrollRestore($scope);
-
-            $scope.state = 'loading';
-
-
-            $scope.url = url;
-            $scope.feed = feeds.getSubscription(url) || {};
-            $scope.posts = [];
-            $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
-            $scope.subscribe = function (subscribe) {
-                feeds.subscribe($scope.feed, subscribe);
-                $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
-            };
-
-            $scope.$emit('app:setloading', {
-                loading: true
-            });
-
-            feeds.load(url)
-                .then(
-                    function (result) {
-                        $scope.feed = result.feed;
-                        $scope.posts = result.posts || [];
-                        $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
-
-                        $scope.state = 'ready';
-                        $scope.viewMode = result.posts.length == 0 ? 'empty' :
-                            _.some($scope.posts, function (p) {
-                                return p.thumbnail.url;
-                            }) ? 'thumbnails' : 'normal';
-
-
-
-                        $scope.$emit('app:setheader', {
-                            title: $scope.feed.title
-                        });
-                        $scope.$emit('app:setloading', {
-                            loading: false
-                        });
-                        scrollRestoreEvent();
-                    },
-                    function (err) {
-                        $scope.state = 'error';
-                        $scope.$emit('app:setloading', {
-                            loading: false
-                        });
-                    }
-            );
-            $scope.cachePost = function (post) {
-                cache.update(encoder.encodeUrl(post.url), post);
-            };
-  }]);
+}]);

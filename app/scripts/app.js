@@ -12,9 +12,14 @@ angular.module('readerApp', [
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
+                templateUrl: 'views/start.html',
+                controller: 'StartCtrl'
+            })
+            .when('/allfeeds', {
                 templateUrl: 'views/allfeeds.html',
                 controller: 'AllFeedsCtrl'
             })
+        
             .when('/trends', {
                 templateUrl: 'views/trends.html',
                 controller: 'TrendsCtrl'

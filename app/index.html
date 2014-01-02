@@ -25,27 +25,27 @@
                 <div class="page-header"></div>
                 <ul class="nav">
                     <li>
-                        <a href="#/allfeeds">
+                        <a href="#/allfeeds" state>
                             <span class="glyphicon glyphicon-flash"></span> All posts</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#/subscriptions">
+                        <a href="#/subscriptions" state>
                             <span class="glyphicon glyphicon-wrench"></span> My subscriptions</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-href="#/trends">
+                        <a ng-href="#/trends" state>
                             <span class="glyphicon glyphicon-globe"></span> World trends</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#/search">
+                        <a href="#/search" state>
                             <span class="glyphicon glyphicon-search"></span> Find feeds</a>
                     </li>
                     <li class="divider"></li>
                     <li ng-repeat="feed in subscriptions track by feed.url">
-                        <a ng-href="#/feed/{{feed.url|encodeUrl}}">
+                        <a ng-href="#/feed/{{feed.url|encodeUrl}}" state>
                             <img src="{{feed.url|favicon}}" class="feedicon" hidebroken/>
                             <span ng-bind-html="feed.title|stripMarkup"></span>
                         </a>
@@ -120,10 +120,12 @@
 
     <script src="scripts/directives/hidebroken.js"></script>
 
+    <script src="scripts/controllers/start.js"></script>
     <!-- endbuild -->
     <script src="cordova.js"></script>
     <script type="text/javascript">
         $('.app-drawer-toggle[data-toggle="drawer"]').click(function() {
+            console.log('DRAWER TOGGLE');
             $($(this).attr('data-target')).toggleClass('app-drawer-open');
         });
 
