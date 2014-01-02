@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('SearchCtrl', ['$scope', '$location', 'Feeds', '$routeParams', 'ControllerState',
-        function ($scope, $location, feeds, $routeParams, controllerState) {
+    .controller('SearchCtrl', ['$scope', '$routeParams', 'RouteState', 'Feeds', 'ControllerState',
+        function ($scope, $routeParams, routeState, feeds, controllerState) {
+            routeState.load($scope);
             $scope.$emit('app:setheader', {
                 title: 'Find feeds'
             });

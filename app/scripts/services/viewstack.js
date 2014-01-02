@@ -20,7 +20,6 @@
                                 this.restoreRequested = this.restorePossible = false;
                                 var top = this.top || 0;
                                 $timeout(function () {
-                                    $log.debug('scrollTo:0,' + angular.toJson(top));
                                     $window.scrollTo(0, top);
                                 });
                             }

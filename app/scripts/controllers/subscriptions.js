@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('SubscriptionsCtrl', ['$scope', 'Feeds', 'ViewStack',
-        function ($scope, feeds, viewStack) {
+    .controller('SubscriptionsCtrl', ['$scope', 'RouteState', 'Feeds', 'ViewStack',
+        function ($scope, routeState, feeds, viewStack) {
+            routeState.load($scope);
             $scope.$emit('app:setheader', {
                 title: 'My subscriptions'
             });

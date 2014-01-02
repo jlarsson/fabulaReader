@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('TrendsCtrl', ['$scope', 'Feeds', 'ViewStack',
-        function ($scope, feeds, viewStack) {
+    .controller('TrendsCtrl', ['$scope', 'RouteState', 'Feeds', 'ViewStack',
+        function ($scope, routeState, feeds, viewStack) {
+            routeState.load($scope);
             //var defaultCategories = ['Entertainment', 'Sport', 'Science', 'iPhone', 'World of Warcraft', 'Android', 'Obama', 'CNN'];
             var defaultCategories = [];
             $scope.trendingCategories = defaultCategories;
