@@ -50,6 +50,7 @@ img.loading{
 
 /* app header shows hambuger button and tidtle */
 .app-header {
+    z-index: 500;
     position: fixed;
     top: 0;
     left: 0;

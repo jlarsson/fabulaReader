@@ -1,6 +1,8 @@
 <div class="page-header">
     <h3>Current trends</h3>
 </div>
-<div class="row">
-  <a href="#/search/{{cat}}" class="btn btn-success pull-left" ng-repeat="cat in trendingCategories" state>{{cat}}</a>
-</div>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="cat in trendingCategories">
+        <a href="#/search/{{cat}}" state>{{cat}}</a>
+    </li>
+</ul>
