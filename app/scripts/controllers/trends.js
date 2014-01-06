@@ -23,7 +23,7 @@ angular.module('readerApp')
                             .map(function (s) {
                                 return s.replace(/<\/?[^>]+(>|$)/g, '');
                             })
-                            .shuffle()
+                            //.shuffle()
                             .value();
                         $scope.appLoading(false);
                     },
