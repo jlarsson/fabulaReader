@@ -3,8 +3,10 @@
         <div class="loading"></div>
     </div>
     <div ng-switch-when="error" class="jumbotron">
-        <h3>Network problem?</h3>
-        Anyway, we cant load the feed.
+        <div class="page-header">
+            <h3>Network problem?</h3>
+            Anyway, we cant load the feed.
+        </div>
     </div>
     <div ng-switch-default>
         <div ng-if="posts.length === 0">

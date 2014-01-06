@@ -3,21 +3,24 @@
         <div class="loading"></div>
     </div>
     <div ng-switch-when="error" class="jumbotron">
-        <h3>Network problem?</h3>
-        Anyway, we cant load the feed.
+        <div class="page-header">
+            <h3>Network problem?</h3>
+            Anyway, we cant load the feed.
+        </div>
     </div>
     <div ng-switch-default>
         <div class="page-header">
+            <p>
+                <img src="{{url|favicon}}" hidebroken/>&nbsp;{{feed.description}}</p>
             <button class="btn btn-primary btn-xs" ng-show="!isSubscribed" ng-click="subscribe(true)">
                 <span class="glyphicon glyphicon-plus">Subscribe</span>
             </button>
             <button class="btn btn-warning btn-xs" ng-show="isSubscribed" ng-click="subscribe(false)">
                 <span class="glyphicon glyphicon-minus">Unsubscribe</span>
             </button>
-            <p>
-                <img src="{{url|favicon}}" hidebroken/>{{feed.description}}</p>
+            
         </div>
-        
+
         <div ng-if="posts.length === 0">
             <div class="jumbotron">
                 <h3>Nothing published yet?</h3>
@@ -26,9 +29,6 @@
             </div>
         </div>
         <div ng-if="posts.length > 0">
-            <div class="page-header">
-                <h3>The latest posts</h3>
-            </div>
             <ul class="list-group">
                 <li ng-repeat="post in posts track by $index" class="list-group-item clearfix">
                     <div class="pull-left col-xs-7" ng-if="post.thumbnail.url">
