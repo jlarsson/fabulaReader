@@ -9,7 +9,6 @@ angular.module('readerApp')
                 recycleFreq: 1000 * 60 // once a minute
             });
             
-            
             var request = function (url){
                 var deferred = $q.defer();
                 var cachedData = cache.get(url);
@@ -34,20 +33,10 @@ angular.module('readerApp')
             
             this.search = function (query) {
                 //return $http.jsonp('https://ajax.googleapis.com/ajax/services/feed/find?v=1.0&callback=JSON_CALLBACK&q=' + query);
-                return request('https://ajax.googleapis.com/ajax/services/feed/find?v=1.0&callback=JSON_CALLBACK&q=' + query);
+                return request('https://ajax.googleapis.com/ajax/services/feed/find?v=1.0&callback=JSON_CALLBACK&q=' + encodeURIComponent(query));
             };
             
             this.load = function (url) {
-                return request('https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&callback=JSON_CALLBACK&q=' + url);
-                if (settings.canUseAjax()) {
-                    return $http({
-                        method: 'GET',
-                        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&q=' + url,
-                        responseType: 'json',
-                        cache: true
-                        //headers: {'referer': 'http://www.fab3.se'}
-                    });
-                }
-                return $http.jsonp('https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&callback=JSON_CALLBACK&q=' + url, {cache: true});
+                return request('https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
             };
   }]);
