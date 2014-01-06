@@ -26,13 +26,6 @@ angular.module('readerApp')
                 $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
 
                 $scope.state = 'ready';
-                $scope.viewMode = result.posts.length == 0 ? 'empty' :
-                    _.some($scope.posts, function (p) {
-                        return p.thumbnail.url;
-                    }) ? 'thumbnails' : 'normal';
-
-
-
                 $scope.appTitle($scope.feed.title);
                 $scope.appLoading(false);
 

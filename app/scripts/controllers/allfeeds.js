@@ -16,11 +16,6 @@ angular.module('readerApp')
 
                 $scope.posts = posts || [];
                 $scope.state = 'ready';
-                $scope.viewMode = $scope.posts.length == 0 ? 'empty' :
-                    _.some($scope.posts, function (p) {
-                        return p.thumbnail.url;
-                    }) ? 'thumbnails' : 'normal';
-
                 $scope.appLoading(false);
             };
             var loadFail = function () {
