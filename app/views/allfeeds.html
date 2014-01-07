@@ -26,6 +26,13 @@
                         <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)" state>
                             <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                         </a>
+                        <span class="label label-info">
+                            <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
+                            <small ng-show="post.author">by {{post.author}}</small>
+                            <small ng-show="post.feed.link">at
+                                <a href="#/feed/{{post.feed.url|encodeUrl}}" state>{{post.feed.title}}</a>
+                            </small>
+                        </span>
                         <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>
                     </div>
                     <div class="col-xs-5 pull-left" ng-if="post.thumbnail.url">
@@ -37,6 +44,14 @@
                         <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)" state>
                             <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                         </a>
+                        <span class="label label-info">
+                            <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
+                            <small ng-show="post.author">by {{post.author}}</small>
+                            <small ng-show="post.feed.link">at
+                                <a href="#/feed/{{post.feed.url|encodeUrl}}" state>{{post.feed.title}}</a>
+                            </small>
+                        </span>
+
                         <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>
                     </div>
                 </li>
