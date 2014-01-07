@@ -2,7 +2,7 @@
     <a class="btn btn-link" href="{{post.link|externalLink}}">
         <h3>{{post.title|stripMarkup}}</h3>
     </a>
-    <small ng-show="post.publishedDate">{{post.publishedDate|date}}</small>
+    <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
     <small ng-show="post.author">{{post.author}}</small>
 </div>
 <div class="post well well-sm" ng-bind-html="post.content|mapLinksToExternalBrowser"></div>
