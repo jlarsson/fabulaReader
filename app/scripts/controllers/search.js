@@ -15,27 +15,33 @@ angular.module('readerApp')
             var queuedQuery = '';
             var performSearch = function (query) {
                 if ($scope.searchPending) {
+                    $scope.state = 'ready';
                     queuedQuery = query;
                     return;
                 }
                 if (query.length < 2) {
+                    $scope.state = $scope.feeds.length == 0 ? 'noinput' : 'ready';
                     return;
                 }
                 $scope.searchPending = true;
                 $scope.searchPendingFor = query;
 
+                var searchComplete = function (feeds){
+                    $scope.state = feeds.length == 0 ? 'empty' : 'ready';
+                    $scope.feeds = feeds;
+                    $scope.searchPending = false;
+                    if (queuedQuery) {
+                        var q = queuedQuery;
+                        queuedQuery = '';
+                        performSearch(q);
+                    }
+                };
                 feeds.search(query).then(
                     function (result) {
-                        $scope.feeds = result.feeds;
-                        $scope.searchPending = false;
-                        if (queuedQuery) {
-                            var q = queuedQuery;
-                            queuedQuery = '';
-                            performSearch(q);
-                        }
+                        searchComplete(result.feeds);
                     },
                     function (data, status, headers, config) {
-                        $scope.searchPending = false;
+                        searchComplete([]);
                     });
             };
 
