@@ -77,11 +77,11 @@ div.loading{
 
 /* collapsible menu section becomes the drawer */
 .app-drawer {
-    z-index: -1000;
+    display: none;
+    z-index: 1000;
     position: fixed;
     top: 50px;
     left: 0;
-    width: 0px; /* initially invisible */
     height: 100%;
     overflow-y:scroll;
     background-color: #222222; /* as inverse navbar */
@@ -93,9 +93,7 @@ div.loading{
 }
 
 .app-drawer-open {
-    width: 320px;
-    z-index: 1000;
-    /*display:table;*/
+    display:block;
 }
 
 img {
