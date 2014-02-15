@@ -51,7 +51,7 @@ div.loading{
     position:static!important;
 }
 
-/* app header shows hambuger button and tidtle */
+/* app header shows hambuger button and title */
 .app-header {
     z-index: 500;
     position: fixed;
@@ -100,28 +100,6 @@ img {
     max-width: 90%;
     height: auto;
 }
-/*
-@media (min-width: 480px) {
-}
-@media (min-width: 768px) {
-}
-@media (min-width: 992px) {
-}
-
-@media (min-width: 480px) {
-    width: @container-sm;
-}
-@media (min-width: 768px) {
-    width: @container-sm;
-}
-@media (min-width: 992px) {
-    width: @container-md;
-}
-@media (min-width: 1200px){
-}
-*/
-
-
 
 .page-header{
     padding: 15px;
@@ -145,4 +123,16 @@ ul.nav .divider {
     background-color:#3276b1;
     height:1px;
     
+}
+
+
+/* fix classes for fluent rows where we want .row on same line to be equal height */
+.rows-table {
+    display: table;
+}
+.table-row{
+    display: table-row;
+}
+.table-row-cell {
+    display: table-cell;
 }
