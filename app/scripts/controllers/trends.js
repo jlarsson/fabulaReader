@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('TrendsCtrl', ['$scope', 'RouteState', 'Feeds',
-        function ($scope, routeState, feeds) {
-            var state = routeState.load($scope);
-
+    .controller('TrendsCtrl', ['$scope', '_', 'Feeds',
+        function ($scope, _, feeds) {
             $scope.trendingCategories = [];
 
             $scope.appLoading(true);
             $scope.appTitle('World trends');
             feeds.load('http://www.google.com/trends/hottrends/atom/hourly')
                 .then(function (data, status, headers, config) {
+                        $scope.retainScroll();
                         $scope.trendingCategories = _.chain(data.posts)
                             .map(function (post) {
                                 return post.content;

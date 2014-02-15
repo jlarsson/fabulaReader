@@ -24,15 +24,15 @@
         <div ng-if="posts.length === 0">
             <div class="jumbotron">
                 <h3>Nothing published yet?</h3>
-                <a class="btn btn-primary" href="#/search" state>I want to search for and add more feeds</a>
-                <a class="btn btn-primary" href="#/trends" state>I want to add trending feeds</a>
+                <a class="btn btn-primary" href="#/search">I want to search for and add more feeds</a>
+                <a class="btn btn-primary" href="#/trends">I want to add trending feeds</a>
             </div>
         </div>
         <div ng-if="posts.length > 0">
             <ul class="list-group">
                 <li ng-repeat="post in posts track by $index" class="list-group-item clearfix">
                     <div class="pull-left col-xs-7" ng-if="post.thumbnail.url">
-                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)" state>
+                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
                             <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                         </a>
                         <span class="label label-info">
@@ -47,7 +47,7 @@
                         </span>
                     </div>
                     <div class="col-xs-12" ng-if="!post.thumbnail.url">
-                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)" state>
+                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
                             <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
                         </a>
                         <span class="label label-info">

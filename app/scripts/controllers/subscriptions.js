@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('SubscriptionsCtrl', ['$scope', 'RouteState', 'Feeds',
-        function ($scope, routeState, feeds) {
-            var state = routeState.load($scope);
+    .controller('SubscriptionsCtrl', ['$scope', 'Feeds',
+        function ($scope, feeds) {
             $scope.appTitle('My subscriptions');
             $scope.subscriptions = feeds.getSubscriptions();
-            state.restoreScroll();
+            $scope.retainScroll();
   }]);

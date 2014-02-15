@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('SearchCtrl', ['$scope', '$routeParams', 'RouteState', 'Feeds',
-        function ($scope, $routeParams, routeState, feeds) {
-            var state = routeState.load($scope);
+    .controller('SearchCtrl', ['$scope', '$routeParams', 'Cache', 'Feeds',
+        function ($scope, $routeParams, cache, feeds) {
+            var queryCacheKey = 'SearchCtrl:query';
+            
             $scope.appTitle('Find feeds');
             
-            $scope.query = $routeParams.cat || state.query || '';
+            $scope.query = $routeParams.cat || cache.get(queryCacheKey) || '';
             $scope.feeds = [];
             $scope.searchPending = false;
             $scope.searchPendingFor = '';
@@ -27,6 +28,7 @@ angular.module('readerApp')
                 $scope.searchPendingFor = query;
 
                 var searchComplete = function (feeds){
+                    $scope.retainScroll();
                     $scope.state = feeds.length == 0 ? 'empty' : 'ready';
                     $scope.feeds = feeds;
                     $scope.searchPending = false;
@@ -50,7 +52,7 @@ angular.module('readerApp')
             });
 
             $scope.$watch('query', function (search) {
-                state.query = search;
+                cache.update(queryCacheKey, search)
                 performSearch(search);
             });
   }]);

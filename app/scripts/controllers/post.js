@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('PostCtrl', ['$scope', '$routeParams', 'RouteState',
-        function ($scope, $routeParams, routeState) {
+    .controller('PostCtrl', ['$scope', '$routeParams', 
+        function ($scope, $routeParams) {
             var encodedUrl = $routeParams.encodedUrl;
-            var state = routeState.load($scope);
-            state.restoreScroll();
 
-            $scope.post = state.post = (state.post || $scope.popPost(encodedUrl)) || {
+            $scope.retainScroll();
+            $scope.post = $scope.popPost(encodedUrl) || {
                 link: '',
                 title: 'Unable to load post',
-                author: ''
+                author: '',
+                feed: {title: 'Unable to load post'}
             };
             $scope.appTitle($scope.post.feed.title);
   }]);

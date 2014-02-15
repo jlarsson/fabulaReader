@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('AllFeedsCtrl', ['$scope', 'RouteState', 'Feeds',
-        function ($scope, routeState, feeds) {
-            var state = routeState.load($scope);
-
+    .controller('AllFeedsCtrl', ['$scope', 'Feeds',
+        function ($scope, feeds) {
             $scope.state = 'loading';
             $scope.posts = [];
             $scope.appTitle();
             $scope.appLoading(true);
 
             var loadSuccess = function (posts) {
-                state.posts = posts;
-                state.restoreScroll();
+                $scope.retainScroll();
 
                 $scope.posts = posts || [];
                 $scope.state = 'ready';
@@ -23,11 +20,6 @@ angular.module('readerApp')
                 $scope.state = 'error';
                 $scope.appLoading(false);
             };
-
-            if (state.posts) {
-                loadSuccess(state.posts);
-                return;
-            }
 
             feeds.loadSubscribed()
                 .then(loadSuccess, loadFail);

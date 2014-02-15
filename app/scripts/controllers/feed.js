@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('readerApp')
-    .controller('FeedCtrl', ['$scope', '$routeParams', '$log', '_', 'RouteState', 'Feeds', 'Encoder',
-        function ($scope, $routeParams, $log, _, routeState, feeds, encoder) {
+    .controller('FeedCtrl', ['$scope', '$routeParams', '$log', '_', 'Feeds', 'Encoder',
+        function ($scope, $routeParams, $log, _, feeds, encoder) {
             var url = encoder.decodeUrl($routeParams.encodedUrl);
 
-            var state = routeState.load($scope);
             $scope.state = 'loading';
             $scope.url = url;
             $scope.feed = feeds.getSubscription(url) || {};
@@ -19,8 +18,8 @@ angular.module('readerApp')
             $scope.appLoading(true);
 
             var setLoadResult = function (result) {
-                state.loadResult = result;
-                state.restoreScroll();
+                $scope.retainScroll();
+
                 $scope.feed = result.feed;
                 $scope.posts = result.posts || [];
                 $scope.isSubscribed = feeds.isSubscribed($scope.feed.url);
@@ -30,10 +29,6 @@ angular.module('readerApp')
                 $scope.appLoading(false);
 
             };
-            if (state.loadResult) {
-                setLoadResult(state.loadResult);
-                return;
-            }
             feeds.load(url)
                 .then(
                     setLoadResult,
