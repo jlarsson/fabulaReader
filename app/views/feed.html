@@ -32,56 +32,30 @@
             <div class="row table-row">
                 <div class="col-xs-12 col-sm-6 table-row-cell" ng-repeat="post in posts track by $index">
                     <div class="thumbnail">
-                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
-                            <img src="{{post.thumbnail.url}}" alt="" ng-if="post.thumbnail" />
-                        </a>
+                        <div ng-if="post.thumbnail">
+                            <a class="btn btn-link" href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
+                                <img src="{{post.thumbnail.url}}" alt="" />
+                            </a>
+                        </div>
                         <div class="caption">
-                            <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
+                            <a class="btn btn-link" href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
                                 <h3 ng-bind-html="post.title"></h3>
                             </a>
                             <p ng-bind-html="post.contentSnippet"></p>
                             <div class="panel panel-info">
                                 <div class="panel-body">
+                                    <img src="{{post.feed.url|favicon}}" class="feedicon" hidebroken/>
                                     <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
                                     <small ng-show="post.author">by {{post.author}}</small>
+                                    <small ng-show="post.link">at
+                                        <a href="{{post.link|externalLink}}">{{post.feed.title}}</a>
+                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--
-            <ul class="list-group">
-                <li ng-repeat="post in posts track by $index" class="list-group-item clearfix">
-                    <div class="pull-left col-xs-7" ng-if="post.thumbnail.url">
-                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
-                            <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
-                        </a>
-                        <span class="label label-info">
-                            <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
-                            <small ng-show="post.author">by {{post.author}}</small>
-                        </span>
-                        <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>
-                    </div>
-                    <div class="col-xs-5 pull-left" ng-if="post.thumbnail.url">
-                        <span ng-if="post.thumbnail">
-                            <img src="{{post.thumbnail.url}}" />
-                        </span>
-                    </div>
-                    <div class="col-xs-12" ng-if="!post.thumbnail.url">
-                        <a href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
-                            <h4 class="list-group-item-heading" ng-bind-html="post.title"></h4>
-                        </a>
-                        <span class="label label-info">
-                            <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
-                            <small ng-show="post.author">by {{post.author}}</small>
-                        </span>
-
-                        <p class="list-group-item-text" ng-bind-html="post.contentSnippet"></p>
-                    </div>
-                </li>
-            </ul>
--->
         </div>
     </div>
 </ng-switch>

@@ -1,4 +1,5 @@
-<div class="page-header">
+<div class="page-header"></div>
+<!--<div class="page-header">
     <a class="btn btn-link" href="{{post.link|externalLink}}">
         <h3>{{post.title|stripMarkup}}</h3>
     </a>
@@ -6,5 +7,20 @@
         <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
         <small ng-show="post.author">by {{post.author}}</small>
     </div>
+</div>-->
+<div class="thumbnail">
+    <a href="{{post.link|externalLink}}">
+        <h3 ng-bind-html="post.title"></h3>
+    </a>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <img src="{{post.feed.url|favicon}}" class="feedicon" hidebroken/>
+            <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
+            <small ng-show="post.author">by {{post.author}}</small>
+            <small ng-show="post.link">at
+                <a href="{{post.link|externalLink}}">{{post.feed.title}}</a>
+            </small>
+        </div>
+    </div>
+    <div ng-bind-html="post.content|mapLinksToExternalBrowser"></div>
 </div>
-<div class="post well well-sm" ng-bind-html="post.content|mapLinksToExternalBrowser"></div>
