@@ -13,8 +13,8 @@ angular.module('readerApp')
                     var href = $el.attr('href');
                     $el.attr('href',settings.generateExternalHref(href));
                     $el.attr('data-post-x',href);
+                    $el.html('<i class="fa fa-external-link"></i> ' + $el.html());
                 });
-                var s = container.html();
                 return container.html();
             };
   }]);

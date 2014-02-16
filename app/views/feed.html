@@ -48,7 +48,7 @@
                                     <small ng-show="post.publishedDate">{{post.publishedDate|howLongAgo}}</small>
                                     <small ng-show="post.author">by {{post.author}}</small>
                                     <small ng-show="post.link">at
-                                        <a href="{{post.link|externalLink}}">{{post.feed.title}}</a>
+                                        <a class="btn btn-link" href="{{post.link|externalLink}}"><i class="fa fa-external-link"></i> {{post.feed.title}}</a>
                                     </small>
                                 </div>
                             </div>
