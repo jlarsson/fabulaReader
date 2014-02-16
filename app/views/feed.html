@@ -28,9 +28,9 @@
                 <a class="btn btn-primary" href="#/trends">I want to add trending feeds</a>
             </div>
         </div>
-        <div ng-if="posts.length > 0" class="rows-table">
-            <div class="row table-row">
-                <div class="col-xs-12 col-sm-6 table-row-cell" ng-repeat="post in posts track by $index">
+        <div ng-if="posts.length > 0">
+            <div class="row">
+                <div class="col-xs-12" ng-repeat="post in posts track by $index">
                     <div class="thumbnail">
                         <div ng-if="post.thumbnail">
                             <a class="btn btn-link" href="#/post/{{post.url|encodeUrl}}" ng-click="pushPost(post)">
